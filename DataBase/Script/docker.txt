@@ -1,0 +1,15 @@
+
+
+docker commit mysql-pagoOnline bd-pagoonline  para commit de la imagen
+docker save bd-pagoonline | gzip > mysql-pagoOnline.tar.gz   //para hacer el archivo de la imagen
+
+//
+gunzip mysql-pagoOnline.tar.gz
+
+
+
+docker load -i mysql-finalbdpagosonline.tar //cargar la imagen 
+
+docker build -t finalbdpagosonline .  //build de la imagen
+
+docker run --name bdpagos -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root finalbdpagosonline //ejecutar la imagen
